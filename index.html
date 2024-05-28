@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | E-commerce product page</title>
+  </head>
+  <body>
+    <!--I moved the dropdown up here so that when I click on the hamburger
+    btn - I will make the main have an opacity of .5-->
+    <ul class="nav-links nav-dropdown container">
+      <li><img src="images/icon-close.svg" alt="" class="x-btn" /></li>
+      <li><a href="#">Collections</a></li>
+      <li><a href="#">Men</a></li>
+      <li><a href="#">Women</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="lightbox" id="lightbox">
+      <!--MUST put all images here position absolute so we can display
+            them here on mouseover and or click event-->
+      <div class="x-btn-white">
+        <img src="images/icon-close-white.svg" alt="" />
+      </div>
+      <div class="lightbox-container-desktop">
+        <div class="main-image-lightbox">
+          <button class="lightbox-prev-btn">&#10094;</button>
+          <button class="lightbox-next-btn">&#10095;</button>
+
+          <div class="lightbox-carousel">
+            <div class="carousel-img-lightbox" style="display: block">
+              <img src="images/image-product-1.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-lightbox">
+              <img src="images/image-product-2-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-lightbox">
+              <img src="images/image-product-3-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-lightbox">
+              <img src="images/image-product-4-thumbnail.jpg" alt="shoes" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lightbox-thumbnails">
+        <div class="thumb-1 active-thumbnail">
+          <img src="images/image-product-1-thumbnail.jpg" alt="shoes" />
+        </div>
+        <div class="thumb-2">
+          <img src="images/image-product-2-thumbnail.jpg" alt="shoes" />
+        </div>
+        <div class="thumb-3">
+          <img src="images/image-product-3-thumbnail.jpg" alt="shoes" />
+        </div>
+        <div class="thumb-4">
+          <img src="images/image-product-4-thumbnail.jpg" alt="shoes" />
+        </div>
+      </div>
+      <!---->
+    </div>
+    <div class="overlay"></div>
+    <!-- <template id="cart-overlay">-->
+    <div class="add-to-cart-overlay">
+      <p class="atc-cart container">Cart</p>
+      <div class="underline"></div>
+      <div class="atc-content-box container">
+        <img src="images/image-product-1-thumbnail.jpg" alt="" />
+        <div class="atc-p">
+          <p>Fall Limited Edition Sneakers</p>
+          <p>
+            $125.00 x <span class="cart-overlay-number">0</span>
+            <span>$375.00</span>
+          </p>
+        </div>
+        <div class="delete-icon">
+          <img src="images/icon-delete.svg" alt="" />
+        </div>
+      </div>
+      <button class="checkout-btn container">Checkout</button>
+    </div>
+    <!-- </template>-->
+
+    <!--might not use this-->
+    <div class="cart-empty">
+      <p class="atc-cart container">Cart</p>
+      <div class="underline"></div>
+      <div class="atc-content-box container">
+        <p class="empty-p">Your cart is empty</p>
+      </div>
+    </div>
+    <!---->
+
+    <main>
+      <nav class="nav-bar">
+        <div class="nav-bar-desktop">
+          <div class="nav-left">
+            <div class="nav-logo">
+              <img src="images/logo.svg" alt="logo" />
+            </div>
+            <ul class="nav-links">
+              <li><a href="#">Collections</a></li>
+              <li><a href="#">Men</a></li>
+              <li><a href="#">Women</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="nav-right">
+            <div class="cart-img">
+              <div class="cart-number-btn-d">0</div>
+              <img src="images/icon-cart.svg" alt="cart" class="cart" />
+            </div>
+            <div class="avatar">
+              <img src="images/image-avatar.png" alt="avatar" />
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-bar-mobile">
+          <div class="nav-main container">
+            <div class="nav-left">
+              <div class="hamburger-icon">
+                <img src="images/icon-menu.svg" alt="" />
+              </div>
+              <div class="nav-logo">
+                <img src="images/logo.svg" alt="logo" />
+              </div>
+            </div>
+            <div class="nav-right">
+              <div class="cart-img">
+                <div class="cart-number-btn-m">0</div>
+                <img src="images/icon-cart.svg" alt="cart" class="cart" />
+              </div>
+              <img src="images/image-avatar.png" alt="avatar" class="avatar" />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section class="main">
+        <div class="image-container-mobile">
+          <div class="main-image-mobile">
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+            <div class="carousel">
+              <div class="active carousel-img">
+                <img src="images/image-product-1.jpg" alt="shoes" />
+              </div>
+
+              <div class="carousel-img">
+                <img src="images/image-product-2-thumbnail.jpg" alt="shoes" />
+              </div>
+              <div class="carousel-img">
+                <img src="images/image-product-3-thumbnail.jpg" alt="shoes" />
+              </div>
+              <div class="carousel-img">
+                <img src="images/image-product-4-thumbnail.jpg" alt="shoes" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="image-container-desktop">
+          <!--MUST put all images here position absolute so we can display
+          them here on mouseover and or click event-->
+          <div class="main-image-desktop">
+            <div class="carousel-img-desktop active-img">
+              <img src="images/image-product-1.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-desktop">
+              <img src="images/image-product-2-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-desktop">
+              <img src="images/image-product-3-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="carousel-img-desktop">
+              <img src="images/image-product-4-thumbnail.jpg" alt="shoes" />
+            </div>
+          </div>
+          <!--<div class="thumbnails">
+            <div class="thumb-1 active-thumbnail">
+              <img src="images/image-product-1-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="thumb-2">
+              <img src="images/image-product-2-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="thumb-3">
+              <img src="images/image-product-3-thumbnail.jpg" alt="shoes" />
+            </div>
+            <div class="thumb-4">
+              <img src="images/image-product-4-thumbnail.jpg" alt="shoes" />
+            </div>
+          </div>-->
+          <div class="thumbnails">
+            <img
+              src="images/image-product-1-thumbnail.jpg"
+              alt="shoes"
+              class="desktop-thumb"
+            />
+
+            <img
+              src="images/image-product-2-thumbnail.jpg"
+              alt="shoes"
+              class="desktop-thumb"
+            />
+
+            <img
+              src="images/image-product-3-thumbnail.jpg"
+              alt="shoes"
+              class="desktop-thumb"
+            />
+
+            <img
+              src="images/image-product-4-thumbnail.jpg"
+              alt="shoes"
+              class="desktop-thumb"
+            />
+          </div>
+        </div>
+        <div class="content-container container">
+          <p class="title">Sneaker Company</p>
+          <h1>Fall Limited Edition Sneakers</h1>
+          <p class="desc">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+          </p>
+          <div class="price-container">
+            <div class="price-container-left">
+              <h2>$125.00</h2>
+              <button class="perc-btn">50%</button>
+            </div>
+            <p class="original-price">$250.00</p>
+          </div>
+          <div class="content-bottom">
+            <button class="plus-minus-container">
+              <img src="images/icon-minus.svg" alt="" class="minus-btn" />
+              <p class="number">0</p>
+              <img src="images/icon-plus.svg" alt="" class="plus-btn" />
+            </button>
+            <button class="add-to-cart-btn">
+              <img src="images/icon-cart-dark.svg" alt="" />
+              <p>Add to cart</p>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="app.js"></script>
+</html>

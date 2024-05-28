@@ -1,0 +1,678 @@
+/*-------------------
+    VARIABLES
+--------------------*/
+:root {
+  --clr-p-orange: hsl(26, 100%, 55%);
+  --clr-p-pale-orange: hsl(25, 100%, 94%);
+
+  --clr-very-dark-blue: hsl(220, 13%, 13%);
+  --clr-dark-grayish-blue: hsl(219, 9%, 45%);
+  --clr-grayish-blue: hsl(220, 14%, 75%);
+  ---clr-light-grayish-blue: hsl(223, 64%, 98%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-black-75-perc-opacity-lightbox-bg: hsl(0, 0%, 0%, 0.75);
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --br-imgs: 0.8rem;
+}
+/*-------------------
+    RESET
+--------------------*/
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+}
+
+/*-------------------
+    GLOBAL STYLES
+--------------------*/
+body {
+  font-size: 1rem;
+  font-family: "Kumbh Sans", sans-serif;
+  display: grid;
+  place-items: center;
+  color: var(--clr-very-dark-blue);
+  position: relative;
+}
+h1 {
+  font-size: 1.85rem;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 1.9rem;
+}
+button {
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: var(--clr-very-dark-blue);
+  font-weight: var(--fw-700);
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 88%;
+  margin: 0 auto;
+}
+.overlay {
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--clr-black-75-perc-opacity-lightbox-bg);
+  display: none;
+  z-index: 11;
+}
+
+/*-------------------
+    NAV BAR
+--------------------*/
+
+.nav-bar-desktop {
+  visibility: hidden;
+  display: none;
+}
+.nav-bar-mobile {
+  display: block;
+  margin-block: 1.5rem;
+}
+.nav-main,
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-main {
+  justify-content: space-between;
+}
+.nav-right {
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.avatar {
+  width: 20%;
+  cursor: pointer;
+}
+.avatar:hover {
+  border: 2px solid var(--clr-p-orange);
+  border-radius: 50%;
+}
+.cart-img {
+  position: relative;
+}
+/* I might not do it this way
+.cart-empty {
+  display: none;
+}
+.empty-p {
+  text-align: center;
+  margin: 5rem auto;
+  font-weight: var(--fw-700);
+}*/
+
+.cart-number-btn-m,
+.cart-number-btn-d {
+  position: absolute;
+  top: -25%;
+  right: -15%;
+  background-color: var(--clr-p-orange);
+  color: var(--clr-white);
+  font-size: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 100px;
+  font-weight: var(--fw-700);
+  display: none;
+}
+.cart {
+  cursor: pointer;
+}
+.nav-dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-white);
+  width: 70%;
+  height: 100vh;
+  padding: 2rem 0 0 1.5rem;
+  display: none;
+  z-index: 5555;
+}
+.nav-dropdown li {
+  margin-bottom: 1.5rem;
+}
+.nav-dropdown img {
+  margin-bottom: 1.5rem;
+}
+/*-------------------
+    IMAGE CONTAINER
+--------------------*/
+.main-image-mobile {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.prev-btn,
+.next-btn {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--clr-white);
+  border-radius: 50%;
+  font-weight: bolder;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev-btn {
+  left: 4%;
+}
+.next-btn {
+  right: 4%;
+}
+.carousel {
+  width: 100%;
+  height: 300px;
+}
+.carousel-img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.carousel-img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.active {
+  display: block;
+  visibility: visible;
+}
+.image-container-desktop {
+  visibility: hidden;
+  display: none;
+}
+
+/*-------------------
+    CONTENT CONTAINER
+--------------------*/
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.7rem;
+  margin-block: 1.5rem 1rem;
+  color: var(--clr-dark-grayish-blue);
+  font-weight: var(--fw-700);
+}
+.desc {
+  color: var(--clr-dark-grayish-blue);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-block: 1.5rem 2rem;
+}
+.price-container,
+.price-container-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.price-container {
+  justify-content: space-between;
+}
+.perc-btn {
+  background-color: var(--clr-black-75-perc-opacity-lightbox-bg);
+  color: var(--clr-white);
+  padding: 0.3rem 0.5rem;
+}
+.original-price {
+  text-decoration: line-through;
+  color: var(--clr-dark-grayish-blue);
+  font-weight: var(--fw-700);
+}
+
+.plus-minus-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  outline: none;
+}
+.minus-btn,
+.plus-btn {
+  cursor: pointer;
+}
+.number {
+  font-size: 1.2rem;
+  font-weight: var(--fw-700);
+}
+
+.add-to-cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--clr-p-orange);
+  width: 100%;
+  margin-block: 1rem 3rem;
+  padding: 1.2rem;
+  font-weight: var(--fw-700);
+  font-size: 1.1rem;
+  box-shadow: 1px 1px 28px hsla(26, 100%, 55%, 0.5);
+}
+.add-to-cart-btn:hover {
+  opacity: 0.5;
+}
+
+/*----------------------
+    ADD TO CART OVERLAY
+-----------------------*/
+.add-to-cart-overlay {
+  position: absolute;
+  top: 5.2rem;
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.3);
+  border-radius: var(--br-imgs);
+  background-color: var(--clr-white);
+  text-align: center;
+  margin: 0 auto;
+  display: none;
+  z-index: 2000;
+  height: auto;
+  width: 95%;
+}
+.add-to-cart-overlay p {
+  font-size: 1.1rem;
+  text-align: left;
+}
+.atc-content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.1rem;
+  margin-block: 1rem 0.3rem;
+  color: var(--clr-grayish-blue);
+}
+.underline {
+  border-bottom: 2px solid var(---clr-light-grayish-blue);
+  padding-block: 0 0.8rem;
+}
+.atc-cart {
+  margin-top: 0.8rem;
+  color: var(--clr-very-dark-blue);
+  font-weight: var(--fw-700);
+  font-size: 1.6rem !important;
+}
+.atc-content-box img {
+  border-radius: var(--br-imgs);
+  width: 15%;
+}
+.delete-icon {
+  text-align: right;
+  width: 6%;
+}
+.delete-icon img {
+  width: 100%;
+  margin-left: auto;
+}
+
+.checkout-btn {
+  background-color: var(--clr-p-orange);
+  width: 90%;
+  margin: 0.8rem auto 1.5rem auto;
+  padding: 1.2rem;
+  font-weight: var(--fw-700);
+  font-size: 1.3rem;
+}
+.atc-p span {
+  color: var(--clr-very-dark-blue);
+  font-weight: var(--fw-700);
+}
+.cart-overlay-number {
+  color: var(--clr-grayish-blue) !important;
+  font-weight: var(--fw-400) !important;
+  /*text-decoration: underline; 
+  font-weight: var(--fw-700); I would do something like this
+  to make it stand out but the challenge didn't ask for this*/
+}
+/*----------------------
+    CART EMPTY OVERLAY
+-----------------------*/
+.cart-empty {
+  position: absolute;
+  top: 5.2rem;
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.3);
+  border-radius: var(--br-imgs);
+  background-color: var(--clr-white);
+  text-align: center;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  display: none;
+  z-index: 2000;
+}
+
+.empty-p {
+  margin: 4.7rem auto;
+  font-weight: var(--fw-700);
+}
+/*-------------------
+    LIGHTBOX 
+--------------------*/
+.lightbox {
+  display: none;
+}
+/*!----------------------
+/*!    MEDIA QUERIES
+/*!-----------------------*/
+
+@media (min-width: 568px) {
+  .main-image-mobile {
+    height: 700px;
+  }
+  .main-image-mobile img {
+    height: 700px;
+  }
+}
+@media (min-width: 900px) {
+  .nav-bar-mobile {
+    display: none;
+  }
+  .nav-dropdown {
+    visibility: hidden; /*I could not use another display property here */
+    z-index: -10;
+  }
+  .nav-bar-desktop {
+    visibility: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem auto 4rem auto;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(---clr-light-grayish-blue);
+    width: 90%;
+  }
+  .nav-bar-desktop .nav-left .nav-links a:hover {
+    border-bottom: 4px solid var(--clr-p-orange);
+    padding-bottom: 2.3rem;
+  }
+  .nav-logo {
+    margin-right: 2rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    color: var(--clr-grayish-blue);
+    font-weight: var(--fw-400);
+  }
+  .avatar {
+    margin-left: 0.8rem;
+  }
+  .thumbnails img {
+    width: 80%;
+    margin-top: 1rem;
+  }
+  /*-------------------
+    LIGHTBOX 
+--------------------*/
+  .lightbox {
+    display: none;
+    position: absolute;
+    top: 12%;
+    transform: translateY(-12%);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 55%;
+    z-index: 15;
+    text-align: right;
+    border-radius: var(--br-imgs);
+  }
+  .main-image-lightbox {
+    position: relative; /*this is for the prev and next btns*/
+    width: 100%;
+    height: 430px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .lightbox-prev-btn,
+  .lightbox-next-btn {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--clr-white);
+    border-radius: 50%;
+    font-weight: bolder;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lightbox-prev-btn {
+    left: -4%;
+  }
+  .lightbox-next-btn {
+    right: -4%;
+  }
+  .lightbox-carousel {
+    width: 100%;
+    height: 430px;
+    /*object-fit: cover;*/
+  }
+  .x-btn-white {
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: var(--fw-700);
+    color: var(--clr-white);
+  }
+
+  .carousel-img-lightbox {
+    /*so that they sit on top of each other*/
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    display: none;
+  }
+  .carousel-img-lightbox img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: var(--br-imgs);
+  }
+  .lightbox-thumbnails {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+    width: 90%;
+    margin: 1.5rem auto 0 auto;
+  }
+  .lightbox-thumbnails img {
+    border-radius: var(--br-imgs);
+    width: 85%;
+  }
+
+  /*-----------END OF LIGHTBOX----------------*/
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 8rem;
+  }
+  .content-container {
+    align-self: center;
+    margin-block: 4em;
+  }
+  .add-to-cart-overlay,
+  .cart-empty {
+    width: 29.5%;
+    top: 7rem;
+    right: 0;
+  }
+  .add-to-cart-btn {
+    margin-bottom: 0;
+  }
+
+  .image-container-mobile {
+    display: none;
+  }
+  .image-container-desktop {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-image-desktop {
+    position: relative;
+    width: 100%;
+    height: 100%; /*or it has no height*/
+    object-fit: cover;
+  }
+  .carousel-img-desktop {
+    display: none;
+  }
+
+  .carousel-img-desktop img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* NOT AUTO - to make it fill its div*/
+    object-fit: cover;
+  }
+  .main-image-desktop img,
+  .thumbnails img {
+    border-radius: var(--br-imgs);
+  }
+  .thumbnails {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+    overflow: hidden;
+  }
+  .desktop-thumb {
+    width: 10%;
+    height: 60%;
+    object-fit: cover;
+  }
+
+  .thumbnails img:hover {
+    opacity: 0.5;
+    border: solid 2px var(--clr-p-orange); /*this is not really working
+    as the border is taking on the opacity of .5
+    might have to do this with JS mouseover and mouse out  ??*/
+  }
+
+  .active-img {
+    display: block;
+    height: 100%;
+  }
+  .plus-minus-container {
+    gap: 6rem;
+    margin-top: 0.5rem;
+  }
+  .desc {
+    font-size: 0.8rem;
+    margin-block: 0.7rem 0.7rem;
+  }
+  .title {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  body {
+    max-width: 1440px;
+  }
+  .main {
+    gap: 4rem;
+  }
+  .price-container {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+  .nav-links {
+    gap: 3.5rem;
+  }
+  .nav-links li a {
+    font-size: 1.2rem;
+  }
+  .avatar {
+    width: 35%;
+    margin-left: 2rem;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+  .nav-bar-desktop .nav-left .nav-links a:hover {
+    padding-bottom: 3rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  .desc {
+    margin-block: 2rem;
+    font-size: 1.1rem;
+  }
+  .original-price {
+    margin-bottom: 2rem;
+  }
+  .content-bottom {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+  }
+  .content-bottom > * {
+    margin-top: 0;
+  }
+  .plus-minus-container {
+    gap: 2rem;
+  }
+  .lightbox {
+    width: 40%;
+    height: 75%;
+  }
+  .main-image-lightbox {
+    width: 100%;
+    height: 80%;
+    height: 545px;
+  }
+
+  .carousel-img-lightbox img {
+    height: 545px;
+  }
+
+  .lightbox-thumbnails {
+    margin-top: 1.5rem;
+  }
+}
